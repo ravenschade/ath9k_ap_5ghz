@@ -77,13 +77,36 @@ git branch f26 origin/f26
 git checkout f26
 make release
 ```
-- then apply the patch
-
+- then apply the patches:  ath_Kconfig.patch  ath_regd.patch reg.patch
+ 
 - build the kernel
 ```
-fedpkg ath9kap
+fedpkg local
 dnf install --nogpgcheck ./x86_64/kernel-$version.rpm
+```
+
+- after rebooting into the new kernel you should get:
+```
+		Frequencies:
+			* 5180 MHz [36] (20.0 dBm)
+			* 5200 MHz [40] (20.0 dBm)
+			* 5220 MHz [44] (20.0 dBm)
+			* 5240 MHz [48] (20.0 dBm)
+			* 5260 MHz [52] (20.0 dBm) (radar detection)
+			* 5280 MHz [56] (20.0 dBm) (radar detection)
+			* 5300 MHz [60] (20.0 dBm) (radar detection)
+			* 5320 MHz [64] (20.0 dBm) (radar detection)
 ```
 ## Settings for Hostapd:
 
--
+```
+hw_mode=a
+channel=36
+ssid=bla
+#wme_enabled=1
+ieee80211n=1
+ieee80211d=1
+ieee80211h=1
+country_code=DE
+```
+

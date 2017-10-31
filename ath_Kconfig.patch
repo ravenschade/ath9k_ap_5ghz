@@ -1,0 +1,12 @@
+--- vanilla/linux-source-4.13/drivers/net/wireless/ath/Kconfig	2017-09-27 14:43:35.000000000 +0200
++++ linux-source-4.13/drivers/net/wireless/ath/Kconfig	2017-10-31 17:15:11.316914338 +0100
+@@ -22,6 +22,9 @@
+ 
+ if WLAN_VENDOR_ATH
+ 
++config ATH_USER_REGD
++	bool "do not enforce eeprom regulatory restrictions."
++
+ config ATH_DEBUG
+ 	bool "Atheros wireless debugging"
+ 	---help---
